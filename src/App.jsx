@@ -1,35 +1,43 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+
+import PlayScreen from './components/PlayScreen.jsx';
+import SoundsScreen from './components/SoundsScreen.jsx';
+import ThemesScreen from './components/ThemesScreen.jsx';
+import TabLink from './components/TabLink.jsx';
+import TabPane from './components/TabPane.jsx';
 
 function App() {
-  const [count, setCount] = useState(0)
+    const [active_tab_name, set_active_tab_name] = useState("Play Screen");
+    const tabs = {
+        "Play Screen": <PlayScreen/>,
+        "Sounds": <SoundsScreen/>,
+        "Themes": <ThemesScreen/>
+    };
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    const tab_links = [];
+    const tab_panes = [];
+
+    for (const [tab_name, tab_content] of Object.entries(tabs)) {
+        tab_links.push(<TabLink key={tab_name} name={ tab_name } active={ tab_name==active_tab_name } tab_setter={set_active_tab_name}/>);
+        tab_panes.push(<TabPane key={tab_name} content={ tab_content } active={ tab_name==active_tab_name }/>);
+    }
+
+    return (
+        <div className='card m-2 shadow'>
+            <div className='card-header'>
+                <nav>
+                    <div className='nav nav-tabs card-header-tabs'>
+                        {tab_links}
+                    </div>
+                </nav>
+            </div>
+            <div className='card-body'>
+                <div className='tab-content'>
+                    {tab_panes}
+                </div>
+            </div>
+        </div>                  
+    )
 }
 
 export default App
