@@ -1,8 +1,6 @@
 import { useState } from 'react'
 
-function Picker({name, possibilities}) {
-    console.log(possibilities[0]);
-    const [active_radio, set_active_radio] = useState(possibilities[0]);
+function Picker({name, possibilities, active_radio, set_active_radio}) {
 
     function radio_click(name){
         console.log(name);
@@ -11,8 +9,8 @@ function Picker({name, possibilities}) {
 
     const radio_buts = []
     for(var p of possibilities){
-        radio_buts.push(<input type='radio' className='btn-check' id={name+"-"+p+"-btnradio"} key={name+"-"+p+"-btnradio"} value={p} onClick={(e)=>{radio_click(e.target.value);}} checked={active_radio==p} autoComplete='off'/>);
-        radio_buts.push(<label className='btn btn-outline-primary mt-1' htmlFor={name+"-"+p+"-btnradio"} key={name+"-"+p+"-btnradio-label"}>{p}</label>);
+        radio_buts.push(<input type='radio' className='btn-check' id={name+"-"+p+"-btnradio"} readOnly key={name+"-"+p+"-btnradio"} value={p} onClick={(e)=>{radio_click(e.target.value);}} checked={active_radio==p} autoComplete='off'/>);
+        radio_buts.push(<label className='btn btn-outline-secondary mt-1 text-capitalize' htmlFor={name+"-"+p+"-btnradio"} key={name+"-"+p+"-btnradio-label"}>{p}</label>);
     }
   
     return (
