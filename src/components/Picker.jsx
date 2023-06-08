@@ -1,5 +1,3 @@
-import { useState } from 'react'
-
 function Picker({name, possibilities, active_radio, set_active_radio}) {
 
     function radio_click(name){
@@ -16,7 +14,7 @@ function Picker({name, possibilities, active_radio, set_active_radio}) {
     return (
         <div className='card m-2'>
             <div className='card-body'>
-                <h2 className='card-title'>{ name }</h2>
+                <h4 className='card-title'>{ name }</h4>
                 <div className='btn-group d-flex flex-wrap' role='group'>
                     {radio_buts}
                 </div>
