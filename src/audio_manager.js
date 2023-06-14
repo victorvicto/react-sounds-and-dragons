@@ -1,4 +1,4 @@
-import Howl from 'howler';
+import {Howl, Howler} from 'howler';
 import sound_lore from './assets/sound_lore.json';
 
 var sound_howls = {}; // Each sound has an entry in the dict. In each entry is a dictionary with one howl per file
@@ -31,7 +31,7 @@ function fade_out_sound(howl, fade_time, sound_name, file_name){
         console.log("Unloading "+file_name+" in "+sound_name+" sound.");
         howl.unload();
         delete sound_howls[sound_name][file_name];
-        if (Object.keys(myObject).length === 0){
+        if (Object.keys(sound_howls[sound_name]).length === 0){
             console.log("Sound "+sound_name+" has no more howls, deleting it.");
             delete sound_howls[sound_name];
         }
@@ -133,8 +133,25 @@ function play_punctual_sound(sound_name, volume){
     return howl;
 }
 
-function transition(r, p, mc, m, transition_time){
+function play_transition_sounds(transition_info){
+    var howl_list = [];
+        for (const [sound_to_play_name, sound_to_play_info] of Object.entries(transition_info["play"])){
+            setTimeout(()=>{
+                var h = play_punctual_sound(sound_to_play_name, sound_to_play_info["volume"]);
+                howl_list.push(h);
+            }, sound_to_play_info["timing"]);
+        }
+        setTimeout(()=>{
+            for (var h of howl_list){
+                h.unload();
+            }
+        }, transition_info["time"]+5000);
+}
+
+function transition(r, p, mc, m, transition_info){
+    play_transition_sounds(transition_info);
     setControllerVariables(r, p, mc, m);
+    var transition_time = transition_info["time"];
     // GETTING RID OF SOUNDS NOT IN NEW AMBIENCE OR THAT DON'T HAVE THE SAME FILE
     for(const [sound_name, sound_howl_dict] of Object.entries(sound_howls)){
         var file_name = get_sound_file_name(sound_name);

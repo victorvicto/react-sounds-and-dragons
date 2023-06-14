@@ -58,11 +58,11 @@
     "themes":{
         "main adventure":[
             {
-                "file": "/musics/quiet_zelda_adventure.mp3",
+                "file": "/musics/medieval_adventure.mp3",
                 "volume": 0.5
             },
             {
-                "file": "/musics/medieval_adventure.mp3",
+                "file": "/musics/quiet_zelda_adventure.mp3",
                 "volume": 0.5
             }
         ],
@@ -204,7 +204,7 @@
                 ],
                 "shop":[
                     {
-                        "file": "musics/riental_shop.mp3",
+                        "file": "musics/oriental_shop.mp3",
                         "volume": 0.5
                     }
                 ]

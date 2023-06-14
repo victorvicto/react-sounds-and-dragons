@@ -69,12 +69,12 @@ function PlayScreen() {
     const transitions = GetTransitions();
 
     function DoTransition(transition_name){
-        const t_time = sound_lore["transitions"][transition_name]["time"];
         transition( active_region,
                     active_place,
                     active_music_context,
                     active_modifier,
-                    t_time);
+                    sound_lore["transitions"][transition_name]);
+        const t_time = sound_lore["transitions"][transition_name]["time"];
         set_transition_time(t_time/1000);
         set_transition_progress(100);
         set_is_transitioning(true);
