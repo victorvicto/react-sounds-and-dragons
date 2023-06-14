@@ -3,6 +3,7 @@ import Picker from './Picker.jsx';
 import ButtonPanel from './ButtonPanel.jsx';
 import LoadingBar from './LoadingBar.jsx';
 import sound_lore from '../assets/sound_lore.json';
+import transition from '../audio_manager.js';
 
 function GetRegions(){
     return Object.keys(sound_lore["regions"]);
@@ -69,6 +70,11 @@ function PlayScreen() {
 
     function DoTransition(transition_name){
         const t_time = sound_lore["transitions"][transition_name]["time"];
+        transition( active_region,
+                    active_place,
+                    active_music_context,
+                    active_modifier,
+                    t_time);
         set_transition_time(t_time/1000);
         set_transition_progress(100);
         set_is_transitioning(true);

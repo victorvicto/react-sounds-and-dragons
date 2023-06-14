@@ -1,6 +1,22 @@
+import Howl from 'howler';
+import sound_lore from './assets/sound_lore.json';
+
 var sound_howls = {}; // Each sound has an entry in the dict. In each entry is a dictionary with one howl per file
 var theme_howl = null;
+var old_theme_howl = null;
 var theme_file_name = "";
+
+var region = "default";
+var place = "default";
+var music_context = "main";
+var modifier = "no modifier";
+
+function setControllerVariables(r, p, mc, m){
+    region = r;
+    place = p;
+    music_context = mc;
+    modifier = m;
+}
 
 function getRandomArbitrary(min, max) {
     return Math.random() * (max - min) + min;
@@ -117,8 +133,8 @@ function play_punctual_sound(sound_name, volume){
     return howl;
 }
 
-function transition(transition_time){
-
+function transition(r, p, mc, m, transition_time){
+    setControllerVariables(r, p, mc, m);
     // GETTING RID OF SOUNDS NOT IN NEW AMBIENCE OR THAT DON'T HAVE THE SAME FILE
     for(const [sound_name, sound_howl_dict] of Object.entries(sound_howls)){
         var file_name = get_sound_file_name(sound_name);
@@ -134,6 +150,7 @@ function transition(transition_time){
     }
 
     // STARTING NEW SOUNDS
+    // TODO pick a random sound in the array (not just first one)
     for (const [sound_name, sound_info] of Object.entries(sound_lore["places"][place]["ambiance"])){
         var file_name = get_sound_file_name(sound_name);
         if ((sound_name in sound_howls) && (file_name in sound_howls[sound_name])){
@@ -165,7 +182,7 @@ function transition(transition_time){
             html5: true,
         });
         fade_out_theme(old_theme_howl, transition_time);
-        theme_howl.play();
+        theme_howl.play(); // TODO Start at random spot if required
         console.log("Fading "+theme_file_name+" from 0 to "+required_theme_volume+" in "+transition_time+" miliseconds");
         console.log(theme_howl);
         theme_howl.fade(0.0, required_theme_volume, transition_time);
@@ -173,30 +190,32 @@ function transition(transition_time){
     console.log(theme_file_name);
 }
 
-var test_howl = new Howl({
-    src: ["musics/piano_loop.wav"],
-    volume: 1.0,
-    html5: true,
-    onend: () => {
-        let interval_time = 3;
-        setTimeout(() => {
-            self.play();
-        }, interval_time*1000);
-    }
-});
+// var test_howl = new Howl({
+//     src: ["musics/piano_loop.wav"],
+//     volume: 1.0,
+//     html5: true,
+//     onend: () => {
+//         let interval_time = 3;
+//         setTimeout(() => {
+//             self.play();
+//         }, interval_time*1000);
+//     }
+// });
 
-function play(){
-    test_howl.play();
-}
+// function play(){
+//     test_howl.play();
+// }
 
-function pause(){
-    test_howl.pause();
-}
+// function pause(){
+//     test_howl.pause();
+// }
 
-function switch_songs(){
-    if (test_howl.src[0]=="musics/piano_loop.wav"){
-        test_howl.src = ["musics/bass_kick_loop.wav"];
-    } else {
-        test_howl.src = ["musics/piano_loop.wav"];
-    }
-}
+// function switch_songs(){
+//     if (test_howl.src[0]=="musics/piano_loop.wav"){
+//         test_howl.src = ["musics/bass_kick_loop.wav"];
+//     } else {
+//         test_howl.src = ["musics/piano_loop.wav"];
+//     }
+// }
+
+export default transition
