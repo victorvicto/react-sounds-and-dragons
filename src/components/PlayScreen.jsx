@@ -85,22 +85,26 @@ function PlayScreen() {
             <Picker name="Region" 
                     possibilities={regions} 
                     active_radio={active_region}
+                    disabled={is_transitioning}
                     set_active_radio={set_active_region}/>
             <Picker name="Place" 
                     possibilities={places} 
                     active_radio={active_place}
+                    disabled={is_transitioning}
                     set_active_radio={set_active_place}/>
             <Picker name="Music Context" 
                     possibilities={music_contexts} 
                     active_radio={active_music_context}
+                    disabled={is_transitioning}
                     set_active_radio={set_active_music_context}/>
             <Picker name="Modifier" 
                     possibilities={modifiers} 
                     active_radio={active_modifier}
+                    disabled={is_transitioning}
                     set_active_radio={set_active_modifier}/>
             <ButtonPanel    name="Transitions"
                             possibilities={transitions}
-                            disabled={is_transitioning}
+                            is_transitioning={is_transitioning}
                             additional_content={<LoadingBar progress_percentage={transition_progress} transition_time={transition_time}/>}
                             button_pressed_func={DoTransition}/>
         </>
