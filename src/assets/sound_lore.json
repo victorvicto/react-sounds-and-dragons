@@ -66,6 +66,12 @@
                 "volume": 0.5
             }
         ],
+        "no theme":[
+            {
+                "file": "",
+                "volume": 0
+            }
+        ],
         "naruto epic fight":[
             {
                 "file": "/musics/naruto_fight.mp3",
@@ -107,6 +113,14 @@
                     }
                 }
             }
+        },
+        "no music":{
+            "theme":{
+                "name": "no theme",
+                "volume mul": 0,
+                "from start": false
+            },
+            "theme modifiers":{}
         }
     },
     "transitions":{
