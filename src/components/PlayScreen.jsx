@@ -21,7 +21,7 @@ function GetMusicContexts(active_place){
     for (const music_con of Object.keys(sound_lore["places"][active_place]["music contexts"])){
         music_contexts.add(music_con);
     }
-    return music_contexts;
+    return Array.from(music_contexts);
 }
 
 function GetModifiers(active_place, active_music_context){
@@ -46,7 +46,13 @@ function GetModifiers(active_place, active_music_context){
             }
         }
     }
-    return modifiers;
+    return Array.from(modifiers);
+}
+
+function VerifyOptionPresence(active_option, set_active_option, options, default_option){
+    if (!options.includes(active_option)){
+        set_active_option(default_option);
+    }
 }
 
 function GetTransitions(){
@@ -67,6 +73,9 @@ function PlayScreen() {
     const music_contexts = GetMusicContexts(active_place);
     const modifiers = GetModifiers(active_place, active_music_context);
     const transitions = GetTransitions();
+
+    VerifyOptionPresence(active_music_context, set_active_music_context, music_contexts, "main");
+    VerifyOptionPresence(active_modifier, set_active_modifier, modifiers, "no modifier");
 
     function DoTransition(transition_name){
         transition( active_region,
