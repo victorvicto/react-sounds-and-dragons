@@ -2,55 +2,91 @@
     "sounds":{
         "trees wind":{
             "files": [
-                "sounds/trees.mp3"
+                {
+                    "file": "sounds/trees.mp3",
+                    "start": 0.0,
+                    "end": 1.0
+                }
             ],
             "quicksound category": "long"
         },
         "birds":{
             "files": [
-                "sounds/birds.wav"
+                {
+                    "file": "sounds/birds.wav",
+                    "start": 0.0,
+                    "end": 1.0
+                }
             ],
             "quicksound category": "long"
         },
         "door":{
             "files": [
-                "sounds/door.mp3"
+                {
+                    "file": "sounds/door.mp3",
+                    "start": 0.0,
+                    "end": 1.0
+                }
             ],
             "quicksound category": "indoors"
         },
         "fireplace":{
             "files": [
-                "sounds/fireplace.mp3"
+                {
+                    "file": "sounds/fireplace.mp3",
+                    "start": 0.0,
+                    "end": 1.0
+                }
             ],
             "quicksound category": "fire"
         },
         "shop bell":{
             "files": [
-                "sounds/shop_bell.mp3"
+                {
+                    "file": "sounds/shop_bell.mp3",
+                    "start": 0.0,
+                    "end": 1.0
+                }
             ],
             "quicksound category": "indoors"
         },
         "writing":{
             "files": [
-                "sounds/writing.mp3"
+                {
+                    "file": "sounds/writing.mp3",
+                    "start": 0.0,
+                    "end": 1.0
+                }
             ],
             "quicksound category": "indoors"
         },
         "pages turned":{
             "files": [
-                "sounds/pages_turned.mp3"
+                {
+                    "file": "sounds/pages_turned.mp3",
+                    "start": 0.0,
+                    "end": 1.0
+                }
             ],
             "quicksound category": "indoors"
         },
         "wood squeeking":{
             "files": [
-                "sounds/wood_squeeking.mp3"
+                {
+                    "file": "sounds/wood_squeeking.mp3",
+                    "start": 0.0,
+                    "end": 1.0
+                }
             ],
             "quicksound category": "indoors"
         },
         "steps on wood":{
             "files": [
-                "sounds/steps_on_wood.mp3"
+                {
+                    "file": "sounds/steps_on_wood.mp3",
+                    "start": 0.0,
+                    "end": 1.0
+                }
             ],
             "quicksound category": "indoors"
         }
