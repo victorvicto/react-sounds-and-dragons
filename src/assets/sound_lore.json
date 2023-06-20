@@ -3,7 +3,12 @@
         "trees wind":{
             "files": [
                 {
-                    "file": "sounds/trees.mp3",
+                    "file": "sounds/trees1.mp3",
+                    "start": 0.0,
+                    "end": 1.0
+                },
+                {
+                    "file": "sounds/trees2.mp3",
                     "start": 0.0,
                     "end": 1.0
                 }

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import SoundFileViewer from './SoundFileViewer';
 
 function SoundSection({sound_name, files, category}) {
     const [collapsed, set_collapsed] = useState(true);
@@ -11,9 +12,11 @@ function SoundSection({sound_name, files, category}) {
                     {sound_name+"   "}
                     <i className={'small bi bi-chevron-'+(collapsed?"down":"up")}></i>
             </h4>
-            <div className={"card-body collapse"+(collapsed?"":".show")}>
-                {category}
-            </div>
+            <ul className={"list-group list-group-flush collapse"+(collapsed?"":".show")}>
+                {files.map((f)=>
+                    <SoundFileViewer key={f["file"]} file={f}/>
+                )}
+            </ul>
         </div>
 
     )
