@@ -17,7 +17,6 @@ function SoundFileViewer({file}){
                         <div className="card-body py-2">
                             <div className="row">
                                 <input type="range"/>
-                                salope
                             </div>
                             <div className="row">
                                 <input type="range"/>
