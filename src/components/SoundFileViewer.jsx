@@ -16,10 +16,10 @@ function SoundFileViewer({file}){
                     <div className="card">
                         <div className="card-body py-2">
                             <div className="row">
-                                <input type="range"/>
+                                <input className="sound-range left" type="range"/>
                             </div>
                             <div className="row">
-                                <input type="range"/>
+                                <input className="sound-range right" type="range"/>
                             </div>
                         </div>
                     </div>

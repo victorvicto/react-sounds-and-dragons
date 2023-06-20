@@ -1,0 +1,69 @@
+.sound-range {
+    /* removing default appearance */
+    -webkit-appearance: none;
+    appearance: none; 
+    /* creating a custom design */
+    outline: none;
+    /*  slider progress trick  */
+    /* overflow: hidden; */
+}
+  
+  /* Track: webkit browsers */
+.sound-range::-webkit-slider-runnable-track {
+    height: 1px;
+    background: #ccc;
+    border-radius: 16px;
+}
+  
+  /* Track: Mozilla Firefox */
+.sound-range::-moz-range-track {
+    height: 1px;
+    background: #ccc;
+    border-radius: 16px;
+}
+  
+  /* Thumb: webkit */
+.sound-range::-webkit-slider-thumb {
+    /* removing default appearance */
+    -webkit-appearance: none;
+    appearance: none; 
+    /* creating a custom design */
+    height: 15pt;
+    width: 15pt;
+    color: #fff;
+    cursor: grab;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 15pt 15pt;
+}
+  
+  
+  /* Thumb: Firefox */
+.sound-range::-moz-range-thumb {
+    height: 15pt;
+    width: 15pt;
+    color: #fff;
+    cursor: grab;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 15pt 15pt;
+}
+
+  /* Thumb: webkit */
+.sound-range.left::-webkit-slider-thumb {
+    background-image: url("/icons/cursor_left.png");
+}
+  /* Thumb: Firefox */
+.sound-range.left::-moz-range-thumb {
+    background-image: url("/icons/cursor_left.png");
+}
+
+  /* Thumb: webkit */
+  .sound-range.right::-webkit-slider-thumb {
+    background-image: url("/icons/cursor_right.png");
+}
+  /* Thumb: Firefox */
+.sound-range.right::-moz-range-thumb {
+    background-image: url("/icons/cursor_right.png");
+}
+
