@@ -123,6 +123,7 @@ function new_sound_howl(sound_name, file_name, sound_info){
     });
 }
 
+// Faire en sorte que cette fonction autosupprime son howl non?
 function play_punctual_sound(sound_name, volume){
     var file_name = get_sound_file_name(sound_name);
     var howl = new Howl({
