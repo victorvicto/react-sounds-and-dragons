@@ -1,45 +1,47 @@
-.sound-range {
-    /* removing default appearance */
+.sound-bar{
+    background-color: ghostwhite;
+    border-radius: 5pt;
+    width: 0.5%;
+    margin-left: 0.5%;
+}
+
+.volume-profile{
+    height: 3em;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+/*.sound-range {
     -webkit-appearance: none;
     appearance: none; 
-    /* creating a custom design */
     outline: none;
-    /*  slider progress trick  */
-    /* overflow: hidden; */
 }
   
-  /* Track: webkit browsers */
+
 .sound-range::-webkit-slider-runnable-track {
     height: 1px;
     background: #ccc;
-    border-radius: 16px;
 }
   
-  /* Track: Mozilla Firefox */
+
 .sound-range::-moz-range-track {
     height: 1px;
     background: #ccc;
-    border-radius: 16px;
+    border: none;
+}
+
+.sound-range::-moz-range-progress {
+    height: 1px;
 }
   
-  /* Thumb: webkit */
+  
+
 .sound-range::-webkit-slider-thumb {
-    /* removing default appearance */
+
     -webkit-appearance: none;
     appearance: none; 
-    /* creating a custom design */
-    height: 15pt;
-    width: 15pt;
-    color: #fff;
-    cursor: grab;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 15pt 15pt;
-}
-  
-  
-  /* Thumb: Firefox */
-.sound-range::-moz-range-thumb {
+
     height: 15pt;
     width: 15pt;
     color: #fff;
@@ -49,21 +51,34 @@
     background-size: 15pt 15pt;
 }
 
-  /* Thumb: webkit */
+.sound-range::-moz-range-thumb {
+    appearance: none; 
+    height: 15pt;
+    width: 15pt;
+    color: #fff;
+    cursor: grab;
+    border-style: none;
+    background-color: transparent;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 15pt 15pt;
+    transform: translate(0, 50%);
+    position: absolute;
+}
+
 .sound-range.left::-webkit-slider-thumb {
     background-image: url("/icons/cursor_left.png");
 }
-  /* Thumb: Firefox */
+
 .sound-range.left::-moz-range-thumb {
     background-image: url("/icons/cursor_left.png");
 }
 
-  /* Thumb: webkit */
-  .sound-range.right::-webkit-slider-thumb {
+.sound-range.right::-webkit-slider-thumb {
     background-image: url("/icons/cursor_right.png");
 }
-  /* Thumb: Firefox */
+
 .sound-range.right::-moz-range-thumb {
     background-image: url("/icons/cursor_right.png");
-}
+}*/
 
