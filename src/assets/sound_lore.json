@@ -6,6 +6,8 @@
                     "file": "sounds/trees1.mp3",
                     "start": 0.0,
                     "end": 1.0,
+                    "real start": 0.0,
+                    "real end": 1.0,
                     "volume profile": [
                         0.005413, 0.015719, 0.028214, 0.034591, 0.047638, 0.054142, 0.062159, 0.072841, 0.082032, 0.093126,
                         0.102394, 0.112682, 0.119985, 0.126817, 0.131734, 0.138926, 0.146391, 0.150872, 0.159778, 0.165111,
@@ -22,7 +24,9 @@
                 {
                     "file": "sounds/trees2.mp3",
                     "start": 0.0,
-                    "end": 1.0
+                    "end": 1.0,
+                    "real start": 0.0,
+                    "real end": 1.0
                 }
             ],
             "quicksound category": "long"
@@ -32,7 +36,9 @@
                 {
                     "file": "sounds/birds.wav",
                     "start": 0.0,
-                    "end": 1.0
+                    "end": 1.0,
+                    "real start": 0.0,
+                    "real end": 1.0
                 }
             ],
             "quicksound category": "long"
@@ -42,7 +48,9 @@
                 {
                     "file": "sounds/door.mp3",
                     "start": 0.0,
-                    "end": 1.0
+                    "end": 1.0,
+                    "real start": 0.0,
+                    "real end": 1.0
                 }
             ],
             "quicksound category": "indoors"
@@ -62,7 +70,9 @@
                 {
                     "file": "sounds/shop_bell.mp3",
                     "start": 0.0,
-                    "end": 1.0
+                    "end": 1.0,
+                    "real start": 0.0,
+                    "real end": 1.0
                 }
             ],
             "quicksound category": "indoors"
@@ -72,7 +82,9 @@
                 {
                     "file": "sounds/writing.mp3",
                     "start": 0.0,
-                    "end": 1.0
+                    "end": 1.0,
+                    "real start": 0.0,
+                    "real end": 1.0
                 }
             ],
             "quicksound category": "indoors"
@@ -82,7 +94,9 @@
                 {
                     "file": "sounds/pages_turned.mp3",
                     "start": 0.0,
-                    "end": 1.0
+                    "end": 1.0,
+                    "real start": 0.0,
+                    "real end": 1.0
                 }
             ],
             "quicksound category": "indoors"
@@ -92,7 +106,9 @@
                 {
                     "file": "sounds/wood_squeeking.mp3",
                     "start": 0.0,
-                    "end": 1.0
+                    "end": 1.0,
+                    "real start": 0.0,
+                    "real end": 1.0
                 }
             ],
             "quicksound category": "indoors"
@@ -102,7 +118,9 @@
                 {
                     "file": "sounds/steps_on_wood.mp3",
                     "start": 0.0,
-                    "end": 1.0
+                    "end": 1.0,
+                    "real start": 0.0,
+                    "real end": 1.0
                 }
             ],
             "quicksound category": "indoors"
