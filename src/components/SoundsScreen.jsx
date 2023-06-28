@@ -3,6 +3,11 @@ import sound_lore from '../assets/sound_lore.json';
 
 function SoundsScreen() {
 
+    function modifySound(sound_name, new_sound){
+        sound_lore["sounds"][sound_name] = new_sound;
+        // TODO using DB?
+    }
+
     var sound_sections = []
     for(const [key, sound_info] of Object.entries(sound_lore["sounds"])){
         sound_sections.push(

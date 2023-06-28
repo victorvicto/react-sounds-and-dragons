@@ -73,12 +73,11 @@ function SoundFileViewer({file}){
                             <div className="row">
                                 <input type="range" min="0.0" max="1.0" step="0.001" value={real_start_time} onChange={real_start_time_update}/>
                             </div>
-                            {("volume profile" in file) && 
-                                <VolumeProfile  samples={file["volume profile"]} 
-                                                start={start_time} 
-                                                real_start={real_start_time} 
-                                                real_end={real_end_time}
-                                                end={end_time}/>}
+                            <VolumeProfile  file={file} 
+                                            start={start_time} 
+                                            real_start={real_start_time} 
+                                            real_end={real_end_time}
+                                            end={end_time}/>
                             <div className="row">
                                 <input type="range" min="0.0" max="1.0" step="0.001" value={real_end_time} onChange={real_end_time_update}/>
                             </div>

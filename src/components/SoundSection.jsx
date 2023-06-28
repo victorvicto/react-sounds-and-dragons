@@ -13,9 +13,9 @@ function SoundSection({sound_name, files, category}) {
                     <i className={'small bi bi-chevron-'+(collapsed?"down":"up")}></i>
             </h4>
             <ul className={"list-group list-group-flush collapse"+(collapsed?"":".show")}>
-                {files.map((f)=>
+                {(!collapsed) && (files.map((f)=>
                     <SoundFileViewer key={f["file"]} file={f}/>
-                )}
+                ))}
             </ul>
         </div>
 
