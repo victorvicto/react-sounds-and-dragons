@@ -1,14 +1,14 @@
-import getVolumeProfile from "../extractors.js";
+import setVolumeProfile from "../extractors.js";
+import { useState } from 'react';
 
 function VolumeProfile({file, start, real_start, real_end, end}){
-    var profile;
-    if(!("volume profile" in file)){
-        profile = getVolumeProfile("./public/" + file["file"]);
-        file["volume profile"] = profile;
-    } else {
-        profile = file["volume profile"];
+    const [profile, set_profile] = useState(file["volume profile"]);
+    if(profile==null){
+        setVolumeProfile(file, set_profile);
+        return (<div className="card volume-profile"></div>)
     }
 
+    console.log("coucou");
     return (
         <div className="card volume-profile">
             {profile.map((val, i)=>{
