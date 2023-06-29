@@ -12,8 +12,6 @@ function setVolumeProfile(file, set_profile) {
             // Get the audio data from the buffer
             const audio_data = audio_buffer.getChannelData(0); // Assuming mono audio
             const delta_samp = audio_data.length/101.0;
-            console.log(audio_data);
-            console.log(delta_samp);
             var highest = 0
             for(var i=1;i<=100;i++){
                 const samp = Math.abs(audio_data[Math.round(i*delta_samp)]);
@@ -23,7 +21,6 @@ function setVolumeProfile(file, set_profile) {
                 }
 
             }
-            console.log(highest);
             set_profile(final_profile);
         })
         .catch(error => {

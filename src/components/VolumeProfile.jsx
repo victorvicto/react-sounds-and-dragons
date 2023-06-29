@@ -8,7 +8,6 @@ function VolumeProfile({file, start, real_start, real_end, end}){
         return (<div className="card volume-profile"></div>)
     }
 
-    console.log("coucou");
     return (
         <div className="card volume-profile">
             {profile.map((val, i)=>{
