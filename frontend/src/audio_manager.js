@@ -1,5 +1,5 @@
 import {Howl, Howler} from 'howler';
-import sound_lore from './assets/sound_lore.json';
+//import sound_lore from './assets/sound_lore.json';
 
 var sound_howls = {}; // Each sound has an entry in the dict. In each entry is a dictionary with one howl per file
 var theme_howl = null;

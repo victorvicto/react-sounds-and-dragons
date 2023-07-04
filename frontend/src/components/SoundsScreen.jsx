@@ -1,11 +1,21 @@
+import { useState } from 'react';
 import SoundSection from './SoundSection';
-import sound_lore from '../assets/sound_lore.json';
+// import sound_lore from '../assets/sound_lore.json';
 
 function SoundsScreen() {
+    const [sound_lore, set_sound_lore] = useState(null);
 
     function modifySound(sound_name, new_sound){
         sound_lore["sounds"][sound_name] = new_sound;
         // TODO using DB?
+    }
+
+    fetch('/sound_lore')
+        .then(response => response.json())
+        .then(data => set_sound_lore(data));
+
+    if(sound_lore==null){
+        return (<h1>Loading</h1>);
     }
 
     var sound_sections = []

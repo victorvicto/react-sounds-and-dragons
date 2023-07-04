@@ -48,6 +48,39 @@ function SoundFileViewer({file}){
         play_punctual_sound_by_filename(file["file"], 1);
     }
 
+    function save_sound(event){
+        // Temporary, CHANGE THIS
+        fetch('/myserver.endpoint', {
+            method: 'POST',
+            body: JSON.stringify({
+                path: ["sounds"],
+                final_key: "test_cul",
+                content: {
+                    "files": [
+                        {
+                            "file": "sounds/test.wav",
+                            "start": 0.0,
+                            "end": 1.0,
+                            "real start": 0.0,
+                            "real end": 1.0
+                        }
+                    ],
+                    "quicksound category": "long"
+                }
+            }),
+            headers: {
+              'Content-type': 'application/json; charset=UTF-8',
+            },
+        }).then((response) => response.json())
+        .then((data) => {
+            console.log(data);
+            // Handle data
+        })
+        .catch((err) => {
+            console.log(err.message);
+        });
+    }
+
     var file_path_parts = file["file"].split("/");
     var first_path_part = file_path_parts.slice(0,-1).join("/");
     return (
@@ -65,7 +98,7 @@ function SoundFileViewer({file}){
                             <button className='btn btn-outline-info' onClick={play_sound}>Play</button>
                         </div>
                         <div className='col-6 p-1 d-grid'>
-                            <button className='btn btn-outline-success'>Save</button>
+                            <button className='btn btn-outline-success' onClick={save_sound}>Save</button>
                         </div>
                     </div>
                 </div>

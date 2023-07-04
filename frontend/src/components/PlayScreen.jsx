@@ -2,18 +2,17 @@ import { useState } from 'react';
 import Picker from './Picker.jsx';
 import ButtonPanel from './ButtonPanel.jsx';
 import LoadingBar from './LoadingBar.jsx';
-import sound_lore from '../assets/sound_lore.json';
 import { transition } from '../audio_manager.js';
 
-function GetRegions(){
+function GetRegions(sound_lore){
     return Object.keys(sound_lore["regions"]);
 }
 
-function GetPlaces(){
+function GetPlaces(sound_lore){
     return Object.keys(sound_lore["places"]);
 }
 
-function GetMusicContexts(active_place){
+function GetMusicContexts(sound_lore, active_place){
     var music_contexts = new Set();
     for (const music_con of Object.keys(sound_lore["music contexts"])){
         music_contexts.add(music_con);
@@ -24,7 +23,7 @@ function GetMusicContexts(active_place){
     return Array.from(music_contexts);
 }
 
-function GetModifiers(active_place, active_music_context){
+function GetModifiers(sound_lore, active_place, active_music_context){
     var modifiers = new Set();
     modifiers.add("no modifier");
     if ("ambiance modifiers" in sound_lore["places"][active_place]){
@@ -55,7 +54,7 @@ function VerifyOptionPresence(active_option, set_active_option, options, default
     }
 }
 
-function GetTransitions(){
+function GetTransitions(sound_lore){
     return Object.keys(sound_lore["transitions"]);
 }
 
@@ -67,12 +66,23 @@ function PlayScreen() {
     const [transition_progress, set_transition_progress] = useState(0);
     const [transition_time, set_transition_time] = useState(1);
     const [is_transitioning, set_is_transitioning] = useState(false);
+    const [sound_lore, set_sound_lore] = useState(null);
 
-    const regions = GetRegions();
-    const places = GetPlaces();
-    const music_contexts = GetMusicContexts(active_place);
-    const modifiers = GetModifiers(active_place, active_music_context);
-    const transitions = GetTransitions();
+    fetch('/sound_lore')
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            set_sound_lore(data);});
+
+    if(sound_lore==null){
+        return (<h1>Loading</h1>);
+    }
+
+    const regions = GetRegions(sound_lore);
+    const places = GetPlaces(sound_lore);
+    const music_contexts = GetMusicContexts(sound_lore, active_place);
+    const modifiers = GetModifiers(sound_lore, active_place, active_music_context);
+    const transitions = GetTransitions(sound_lore);
 
     VerifyOptionPresence(active_music_context, set_active_music_context, music_contexts, "main");
     VerifyOptionPresence(active_modifier, set_active_modifier, modifiers, "no modifier");
