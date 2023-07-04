@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import VolumeProfile from "./VolumeProfile.jsx";
+import { play_punctual_sound_by_filename } from "../audio_manager.js";
 
 function SoundFileViewer({file}){
     const [start_time, set_start_time] = useState(file["start"]);
@@ -43,6 +44,10 @@ function SoundFileViewer({file}){
         }
     }
 
+    function play_sound(event){
+        play_punctual_sound_by_filename(file["file"], 1);
+    }
+
     var file_path_parts = file["file"].split("/");
     var first_path_part = file_path_parts.slice(0,-1).join("/");
     return (
@@ -57,7 +62,7 @@ function SoundFileViewer({file}){
                     </div>
                     <div className='m-1 row'>
                         <div className='col-6 p-1 d-grid'>
-                            <button className='btn btn-outline-info'>Play</button>
+                            <button className='btn btn-outline-info' onClick={play_sound}>Play</button>
                         </div>
                         <div className='col-6 p-1 d-grid'>
                             <button className='btn btn-outline-success'>Save</button>

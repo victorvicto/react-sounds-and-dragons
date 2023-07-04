@@ -3,7 +3,7 @@ import Picker from './Picker.jsx';
 import ButtonPanel from './ButtonPanel.jsx';
 import LoadingBar from './LoadingBar.jsx';
 import sound_lore from '../assets/sound_lore.json';
-import transition from '../audio_manager.js';
+import { transition } from '../audio_manager.js';
 
 function GetRegions(){
     return Object.keys(sound_lore["regions"]);

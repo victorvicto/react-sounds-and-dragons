@@ -126,27 +126,27 @@ function new_sound_howl(sound_name, file_name, sound_info){
 // Faire en sorte que cette fonction autosupprime son howl non?
 function play_punctual_sound(sound_name, volume){
     var file_name = get_sound_file_name(sound_name);
+    play_punctual_sound_by_filename(file_name, volume)
+}
+
+function play_punctual_sound_by_filename(file_name, volume){
     var howl = new Howl({
         src: [file_name],
-        volume: volume
+        volume: volume,
+        onplay: ()=>{
+            console.log(howl.duration());
+            setTimeout(()=>{howl.unload()}, howl.duration()*1000);
+        }
     });
     howl.play();
-    return howl;
 }
 
 function play_transition_sounds(transition_info){
-    var howl_list = [];
-        for (const [sound_to_play_name, sound_to_play_info] of Object.entries(transition_info["play"])){
-            setTimeout(()=>{
-                var h = play_punctual_sound(sound_to_play_name, sound_to_play_info["volume"]);
-                howl_list.push(h);
-            }, sound_to_play_info["timing"]);
-        }
+    for (const [sound_to_play_name, sound_to_play_info] of Object.entries(transition_info["play"])){
         setTimeout(()=>{
-            for (var h of howl_list){
-                h.unload();
-            }
-        }, transition_info["time"]+5000);
+            play_punctual_sound(sound_to_play_name, sound_to_play_info["volume"]);
+        }, sound_to_play_info["timing"]);
+    }
 }
 
 function transition(r, p, mc, m, transition_info){
@@ -236,4 +236,4 @@ function transition(r, p, mc, m, transition_info){
 //     }
 // }
 
-export default transition
+export {transition, play_punctual_sound, play_punctual_sound_by_filename}
