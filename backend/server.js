@@ -1,15 +1,20 @@
 const express = require("express");
+const cors = require("cors");
 var fs = require('fs');
 
 const app = express();
 var sound_lore = JSON.parse(fs.readFileSync('./Public/sound_lore.json', 'utf8'));
+
+app.use(cors({
+    origin: 'http://localhost:5173'
+}));
 
 app.get('/', (req, res) => {
         res.send('Hello World!')
     });
 
 app.get("/sound_lore", async (req, res) => {
-	    res.send(sound_lore);
+	    res.json(sound_lore);
     });
 
 app.post("/new", (req, res) => {

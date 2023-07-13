@@ -68,13 +68,14 @@ function PlayScreen() {
     const [is_transitioning, set_is_transitioning] = useState(false);
     const [sound_lore, set_sound_lore] = useState(null);
 
-    fetch('/sound_lore')
-        .then(response => response.json())
+    if(sound_lore==null){
+        fetch('http://localhost:5000/sound_lore')
+        .then(response => {
+            console.log(response);
+            return response.json();})
         .then(data => {
             console.log(data);
             set_sound_lore(data);});
-
-    if(sound_lore==null){
         return (<h1>Loading</h1>);
     }
 
