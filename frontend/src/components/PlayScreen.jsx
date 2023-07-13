@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Picker from './Picker.jsx';
 import ButtonPanel from './ButtonPanel.jsx';
 import LoadingBar from './LoadingBar.jsx';
-import { transition } from '../audio_manager.js';
+import audio_manager from '../audio_manager.js';
 
 function GetRegions(sound_lore){
     return Object.keys(sound_lore["regions"]);
@@ -58,7 +58,7 @@ function GetTransitions(sound_lore){
     return Object.keys(sound_lore["transitions"]);
 }
 
-function PlayScreen() {
+function PlayScreen({sound_lore}) {
     const [active_region, set_active_region] = useState("default");
     const [active_place, set_active_place] = useState("default");
     const [active_music_context, set_active_music_context] = useState("main");
@@ -66,16 +66,8 @@ function PlayScreen() {
     const [transition_progress, set_transition_progress] = useState(0);
     const [transition_time, set_transition_time] = useState(1);
     const [is_transitioning, set_is_transitioning] = useState(false);
-    const [sound_lore, set_sound_lore] = useState(null);
 
     if(sound_lore==null){
-        fetch('http://localhost:5000/sound_lore')
-        .then(response => {
-            console.log(response);
-            return response.json();})
-        .then(data => {
-            console.log(data);
-            set_sound_lore(data);});
         return (<h1>Loading</h1>);
     }
 
@@ -89,7 +81,7 @@ function PlayScreen() {
     VerifyOptionPresence(active_modifier, set_active_modifier, modifiers, "no modifier");
 
     function DoTransition(transition_name){
-        transition( active_region,
+        audio_manager.transition( active_region,
                     active_place,
                     active_music_context,
                     active_modifier,

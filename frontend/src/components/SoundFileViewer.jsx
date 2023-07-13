@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import VolumeProfile from "./VolumeProfile.jsx";
-import { play_punctual_sound_by_filename } from "../audio_manager.js";
+import audio_manager from "../audio_manager.js";
 
 function SoundFileViewer({file}){
     const [start_time, set_start_time] = useState(file["start"]);
@@ -45,7 +45,7 @@ function SoundFileViewer({file}){
     }
 
     function play_sound(event){
-        play_punctual_sound_by_filename(file["file"], 1);
+        audio_manager.play_punctual_sound_by_filename(file["file"], 1);
     }
 
     function save_sound(event){

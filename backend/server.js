@@ -3,7 +3,7 @@ const cors = require("cors");
 var fs = require('fs');
 
 const app = express();
-var sound_lore = JSON.parse(fs.readFileSync('./Public/sound_lore.json', 'utf8'));
+var sound_lore = JSON.parse(fs.readFileSync('./sound_lore.json', 'utf8'));
 
 app.use(cors({
     origin: 'http://localhost:5173'
@@ -16,6 +16,8 @@ app.get('/', (req, res) => {
 app.get("/sound_lore", async (req, res) => {
 	    res.json(sound_lore);
     });
+
+app.use('/files', express.static('public'))
 
 app.post("/new", (req, res) => {
         var parent = sound_lore;

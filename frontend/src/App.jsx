@@ -5,13 +5,27 @@ import SoundsScreen from './components/SoundsScreen.jsx';
 import ThemesScreen from './components/ThemesScreen.jsx';
 import TabLink from './components/TabLink.jsx';
 import TabPane from './components/TabPane.jsx';
+import audio_manager from './audio_manager.js';
 
 function App() {
     const [active_tab_name, set_active_tab_name] = useState("Play Screen");
+    const [sound_lore, set_sound_lore] = useState(null);
+
+    if(sound_lore==null){
+        fetch('http://localhost:5000/sound_lore')
+        .then(response => {
+            console.log(response);
+            return response.json();})
+        .then(data => {
+            console.log(data);
+            audio_manager.sound_lore = data;
+            set_sound_lore(data);});
+    }
+
     const tabs = {
-        "Play Screen": <PlayScreen/>,
-        "Sounds": <SoundsScreen/>,
-        "Themes": <ThemesScreen/>
+        "Play Screen": <PlayScreen sound_lore={sound_lore}/>,
+        "Sounds": <SoundsScreen sound_lore={sound_lore}/>,
+        "Themes": <ThemesScreen sound_lore={sound_lore}/>
     };
 
     const tab_links = [];
